@@ -1,3 +1,4 @@
+from time import time
 from Functions import display_config, moveFiles, choose_folder
 import types
 from pathlib import Path
@@ -72,6 +73,10 @@ def main():
         return
     files = []
     org_folder = choose_folder()
+    if not org_folder:
+        print("[!] No folder selected")
+        time.sleep(2.5)
+        return
     for file in org_folder.iterdir():
         if file.is_file():
             files.append(file.name)
@@ -93,8 +98,8 @@ def main():
                 failed+=1
     if not filescount:
         print(f"\n[!] No files exists in {org_folder} to organize..")
-        input("\n[i] Enter anthing..")
+        input("\n[↵] Enter to Continue...")
         return True
     print(f"\nTOTAL FILES : {filescount} | SUCCESS : {success} | FAILED : {failed}")
-    input("\n[i] Enter anthing..")
+    input("\n[↵] Enter to Continue...")
 

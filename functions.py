@@ -39,10 +39,12 @@ def check_config_exists():
 
 def choose_folder():
     print("[+] Choose the Folder to organize")
-    org_folder = Path(filedialog.askdirectory(title="Choose the folder to organize "))
-    print(f"[i] Selected folder - {org_folder}")
-    return org_folder
-
+    selected_folder = filedialog.askdirectory(title="Choose the folder to organize ")
+    if selected_folder:
+        org_folder = Path(selected_folder)
+        print(f"[i] Selected folder - {org_folder}")
+        return org_folder
+    return False
 def display_config(isFile=True, jsondata=False):
     if isFile:
         check_config_exists()

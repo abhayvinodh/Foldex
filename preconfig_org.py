@@ -1,6 +1,6 @@
 from Functions import display_config, choose_folder, moveFiles
 import tkinter as tk
-
+import time
 
 root = tk.Tk()
 root.withdraw()
@@ -13,6 +13,10 @@ def main():
     print("-------| Pre-Config ORGANIZE |-------")
 
     org_folder = choose_folder()
+    if not org_folder:
+        time.sleep(2.5)
+        print("[!] No folder selected")
+        return
     config_data = display_config()
     confirm = input("[?] Organize with this current config? (Y/N) : ").lower()
     if confirm!='y':
@@ -28,9 +32,9 @@ def main():
                 failed+=1
     if not filescount:
         print(f"\n[!] No files exists in {org_folder} to organize..")
-        input("\n[i] Enter anthing..")
+        input("\n[↵] Enter to Continue...")
         return True
     print(f"\nTOTAL FILES : {filescount} | SUCCESS : {success} | FAILED : {failed}")
-    input("\n[i] Enter anthing..")
+    input("\n[↵] Enter to Continue...")
 
 
