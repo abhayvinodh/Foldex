@@ -2,6 +2,10 @@ import ai_organize as ao
 import preconfig_org as po
 from functions import display_config
 import time
+import os
+
+if os.name == 'nt':
+    os.system('')
 
 def display_op():
     print("\033[H\033[2J", end="")
