@@ -25,7 +25,23 @@ def check_key():
         setup_key()
     return SETUP_FLAG.read_text()
     
-
+def choose_model():
+    while True:
+        print(f"\n{'-' * 30}\n [1] Gemini-3.5-flash\n [2] Gemini-3.1-pro-preview\n [3] Gemini-3-flash-preview\n [4] Gemini-3.1-flash-lite\n [5] gemini-2.5-flash\n")
+        ai_model = int(input("[?] Choose AI model to use > "))
+        if ai_model==1:
+            return "gemini-3.5-flash"
+        elif ai_model==2:
+            return "gemini-3.1-pro-preview"
+        elif ai_model==3:
+            return "gemini-3-flash-preview"
+        elif ai_model==4:
+            return "gemini-3.1-flash-lite"
+        elif ai_model==5:
+            return "gemini-2.5-flash"
+        else:
+            print("[!] INVALID SELECTION... Try Again")
+        
 def generate_response(files, key):
     # pyrefly: ignore [missing-import]
     from google import genai
@@ -54,13 +70,18 @@ Example output:
     "Programming": [".py", ".jsx"]
 }
     """
+    ai_model = choose_model()
     print("[Ai] Analysing file extensions...")
-    response = client.models.generate_content(
-        model="gemini-3.5-flash",
-        config=types.GenerateContentConfig(
-            system_instruction=instruction),
-        contents=files
-    )
+    try:
+        response = client.models.generate_content(
+            model=ai_model,
+            config=types.GenerateContentConfig(
+                system_instruction=instruction),
+            contents=files
+        )
+    except Exception as e:
+        print(e)
+        return False
     # print(response.text)
     filtered_responce = response.text.replace("```json", "").replace("```", "").strip()
     return filtered_responce
@@ -89,7 +110,8 @@ def main():
             files.append(file.name)
     
     jsondata = generate_response(files, key)
-    
+    if not jsondata:
+        return
     config_data = display_config(isFile=False, jsondata=jsondata)
     confirm = input("[?] Organize with this current config? (Y/N) : ").lower()
     if confirm!='y':
