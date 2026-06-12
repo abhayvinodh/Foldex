@@ -6,6 +6,20 @@ A Python-based utility to automatically organize files in a directory into categ
 
 ## 🛠️ Prerequisites & Installation
 
+### 📦 Quick Start: Download Pre-built Executable (Windows Only)
+If you don't want to install Python, configure environments, or install dependencies, you can download the standalone **Windows Executable**:
+1. Navigate to the [Releases](https://github.com/abhayvinodh/Foldex/releases) page.
+2. Download the latest `Foldex.exe` from the assets section.
+3. Run the executable directly! 
+
+> [!NOTE]
+> * You will still need a **Google Gemini API Key** if you plan to use the **AI Organize** feature.
+> * Since the executable is unsigned, Windows SmartScreen may show a warning. Click **"More info"** and then **"Run anyway"** to run the app.
+
+---
+
+### 💻 Running from Source Code
+
 ### 1. Requirements
 - **Python 3.x** installed on your system.
 - A **Google Gemini API Key** (Required only for the "AI Organize" feature). You can get one for free from [Google AI Studio](https://aistudio.google.com/app/apikey).
@@ -69,9 +83,15 @@ When you run the script, you'll see a styled ASCII command-line menu:
 1. Select **[1]**.
 2. **API Key Setup:** If this is your first time, the app will ask you to enter your Gemini API Key. Paste the key you got from Google AI Studio. It will be saved locally in a `.KEY` file for future use. (Make sure `.KEY` is kept private and never committed!)
 3. **Select Folder:** A native file selection dialog will pop up. Choose the folder you want to organize. If you cancel, the program safely returns to the main menu.
-4. **AI Analysis:** The tool scans all files in that folder and sends the list of file extensions to Gemini AI.
-5. **Categorization:** The AI groups similar file extensions into logical categories. It displays the proposed structure.
-6. **Confirmation:** Type `Y` to confirm. The files will then be moved into their respective new folders.
+4. **Choose AI Model:** You will be prompted to choose which Gemini model to use for the analysis:
+   - `[1] Gemini-3.5-flash` (Fast & highly capable)
+   - `[2] Gemini-3.1-pro-preview` (Highly detailed reasoning)
+   - `[3] Gemini-3-flash-preview`
+   - `[4] Gemini-3.1-flash-lite`
+   - `[5] gemini-2.5-flash`
+5. **AI Analysis:** The tool scans all files in the selected folder and sends the list of file extensions to Gemini AI.
+6. **Categorization:** The AI groups similar file extensions into logical, dynamically created categories and displays the proposed folder layout.
+7. **Confirmation:** Type `Y` to confirm. The files will then be moved into their respective new folders.
 
 #### Option 2: Pre-Config Organize (Static Mode)
 1. Select **[2]**.
