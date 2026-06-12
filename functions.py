@@ -1,4 +1,3 @@
-from enum import Flag
 from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog
@@ -58,7 +57,7 @@ def display_config(isFile=True, jsondata=False):
             textwrap.wrap(formats_string, width=60)
         )
         config_rows.append([destination, formats_string])
-    print(tabulate(config_rows, tablefmt="rounded_grid"))
+    print(tabulate(config_rows, tablefmt="rounded_outline"))
     return config_data
 
 def checkFolder(folder):

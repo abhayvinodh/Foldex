@@ -1,8 +1,6 @@
-from functions import display_config, choose_folder, moveFiles
-import json
-from pathlib import Path
+from Functions import display_config, choose_folder, moveFiles
 import tkinter as tk
-from tkinter import filedialog
+
 
 root = tk.Tk()
 root.withdraw()
@@ -12,7 +10,7 @@ def main():
     failed = 0
     filescount = 0
     print("\033[H\033[2J", end="")
-    print("----| Pre-Config Organize |----")
+    print("-------| Pre-Config ORGANIZE |-------")
 
     org_folder = choose_folder()
     config_data = display_config()

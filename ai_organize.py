@@ -1,5 +1,4 @@
-# pyrefly: ignore [missing-import]
-from functions import display_config, moveFiles, choose_folder
+from Functions import display_config, moveFiles, choose_folder
 import types
 from pathlib import Path
 SETUP_FLAG = Path('.KEY')
