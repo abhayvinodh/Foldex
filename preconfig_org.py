@@ -10,12 +10,15 @@ def main():
     failed = 0
     filescount = 0
     print("\033[H\033[2J", end="")
-    print("-------| Pre-Config ORGANIZE |-------")
-
+    print("""
+  ╭────────────────────────────╮
+  │    Pre-Config ORGANIZE     │
+  ╰────────────────────────────╯
+""")
     org_folder = choose_folder()
     if not org_folder:
+        print("[!] No folder selected...")
         time.sleep(2.5)
-        print("[!] No folder selected")
         return
     config_data = display_config()
     confirm = input("[?] Organize with this current config? (Y/N) : ").lower()
@@ -31,7 +34,7 @@ def main():
             else:
                 failed+=1
     if not filescount:
-        print(f"\n[!] No files exists in {org_folder} to organize..")
+        print(f"\n[!] No files exists in {org_folder} to organize...")
         input("\n[↵] Enter to Continue...")
         return True
     print(f"\nTOTAL FILES : {filescount} | SUCCESS : {success} | FAILED : {failed}")

@@ -2,6 +2,7 @@ from time import time
 from Functions import display_config, moveFiles, choose_folder
 import types
 from pathlib import Path
+import time
 SETUP_FLAG = Path('.KEY')
 
 
@@ -71,10 +72,16 @@ def main():
     key = check_key()
     if not key:
         return
+    print("\033[H\033[2J", end="")
+    print("""
+  ╭────────────────────────────╮
+  │        AI ORGANIZE         │
+  ╰────────────────────────────╯
+""")
     files = []
     org_folder = choose_folder()
     if not org_folder:
-        print("[!] No folder selected")
+        print("[!] No folder selected...")
         time.sleep(2.5)
         return
     for file in org_folder.iterdir():

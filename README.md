@@ -10,6 +10,11 @@ A Python-based utility to automatically organize files in a directory into categ
 - **Python 3.x** installed on your system.
 - A **Google Gemini API Key** (Required only for the "AI Organize" feature). You can get one for free from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
+   |🔴 WARNING ⚠|
+   |:---:|
+  |NEVER SHARE YOUR API-KEY !! |
+
+
 ### 2. Setup Steps
 1. **Download/Clone the repository** to your local machine:
    ```bash
@@ -43,7 +48,6 @@ python main.py
 When you run the script, you'll see a command-line menu:
 
 ```
-----| FILE ORGANIZER |------
     [1] - AI Organize
     [2] - Pre-Config Organize
     [3] - View current Config
